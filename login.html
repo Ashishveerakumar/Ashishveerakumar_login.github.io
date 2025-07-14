@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form onsubmit="return validateLogin()">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username" required autofocus>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function validateLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const usernamePattern = /^[A-Za-z][A-Za-z0-9_]*$/;
+
+            if (!usernamePattern.test(username)) {
+                alert('Username must start with a letter and contain only letters, numbers, and underscores.');
+                return false;
+            }
+
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long.');
+                return false;
+            }
+
+            alert('Login successful!');
+            return true;
+        }
+    </script>
+</body>
+</html>
